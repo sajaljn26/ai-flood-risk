@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Flood Detection System
+
+A comprehensive flood risk assessment system that combines coordinate-based analysis and AI-powered image analysis to evaluate flood risk in specific locations.
+
+## Features
+
+- **Coordinate Analysis**: Enter latitude/longitude coordinates to get flood risk assessment
+- **Image Analysis**: Upload terrain images for AI-powered flood risk evaluation
+- **Interactive Map**: Visualize locations and risk levels on Google Maps
+- **Risk Assessment**: Get detailed risk levels (Low, Medium, High, Very High) with recommendations
+- **Real-time Analysis**: Connect to backend API for live flood risk calculations
+
+## Tech Stack
+
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS, shadcn/ui
+- **Backend**: Python FastAPI
+- **Maps**: Google Maps JavaScript API
+- **AI**: Image analysis for terrain evaluation
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- Python 3.8+
+- Google Maps API key
+
+### Environment Setup
+
+1. Copy the environment template:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.local.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Add your Google Maps API key to `.env.local`:
+```bash
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install dependencies:
+```bash
+npm install
+```
 
-## Learn More
+2. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Open [http://localhost:3000](http://localhost:3000) to view the application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
 
-## Deploy on Vercel
+2. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Start the backend server:
+```bash
+python start.py
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The backend API will be available at `http://localhost:8000`
+
+## Usage
+
+### Coordinate Analysis
+1. Select "Coordinates" tab
+2. Enter latitude and longitude values
+3. Click "Analyze Coordinates" to get flood risk assessment
+
+### Image Analysis
+1. Select "Image Analysis" tab
+2. Upload a terrain image (JPG, PNG, GIF up to 10MB)
+3. Click "Analyze Image" for AI-powered flood risk evaluation
+
+### Map Visualization
+- View analyzed locations on the interactive map
+- Risk levels are color-coded: Green (Low), Yellow (Medium), Orange (High), Red (Very High)
+- Circles indicate risk zones around analyzed points
+
+## API Endpoints
+
+- `POST /api/analyze/coordinates` - Analyze flood risk by coordinates
+- `POST /api/analyze/image` - Analyze flood risk from uploaded image
+
+## Project Structure
+
+```
+my-app/
+├── app/                 # Next.js app directory
+├── components/          # Reusable UI components
+├── backend/             # Python FastAPI backend
+│   ├── main.py         # Main API server
+│   ├── start.py        # Server startup script
+│   └── requirements.txt # Python dependencies
+├── lib/                 # Utility functions
+└── public/             # Static assets
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
