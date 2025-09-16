@@ -57,7 +57,7 @@ export default function FloodDetectionSystem() {
   const googleRef = useRef<any>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const API_BASE_URL = "https://flood-analyser.onrender.com";
+  const API_BASE_URL = "https://flood-analyser-hxqv.onrender.com/"  // same-origin when empty
 
   // Initialize Google Maps
   useEffect(() => {
